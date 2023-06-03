@@ -1,107 +1,98 @@
-function atualizarProfissional(){
-    document.getElementById('listaProfissional').innerHTML = ''
-    const profissional = fetch('http://localhost:3000/profissional')
+function atualizarMedicacao(){
+    document.getElementById('listaMedicacao').innerHTML = ''
+    const medicacao = fetch('http://localhost:3000/medicacao')
     .then(resposta => resposta.json())
-    .then(profissional => {
+    .then(medicacao => {
 
-        profissional.forEach(profissional => {
+        medicacao.forEach(medicacao => {
             const li = document.createElement('li')
-            li.textContent = `${profissional.nome} - ${profissional.CPF} - ${profissional.RG} - ${profissional.profissao} - ${profissional.CCR} - ${profissional.assinatura}`
+            li.textContent = `${medicacao.medicacao} - ${medicacao.intensidade} - ${medicacao.posologia}`
             const botaoExcluir = document.createElement('button')
             botaoExcluir.textContent = 'Excluir'
             botaoExcluir.className = 'btn btn-danger m-1'
-            botaoExcluir.addEventListener('click', () => deleteProfissional(profissional.id))
+            botaoExcluir.addEventListener('click', () => deleteMedicacao(medicacao.id))
             li.appendChild(botaoExcluir)
 
             const botaoAtualizar = document.createElement('button')
             botaoAtualizar.textContent = 'Atualizar'
             botaoAtualizar.className = 'btn btn-warning m-1'
-            botaoAtualizar.addEventListener('click', () => showProfissional(profissional))
+            botaoAtualizar.addEventListener('click', () => showMedicacao(medicacao))
 
-            document.getElementById('listaProfissional').appendChild(li)
+            document.getElementById('listaMedicacao').appendChild(li)
         })
     })
 }
 
-function showProfissional(profissional) {
-    document.getElementById('nomeUpdate').value = profissional.nome
-    document.getElementById('CPFUpdate').value = profissional.CPF
-    document.getElementById('RGUpdate').value = profissional.RG
-    document.getElementById('profissaoUpdate').value = profissional.profissao
-    document.getElementById('CCRUpdate').value = profissional.CCR
-    document.getElementById('assinaturaUpdate').value = profissional.assinatura
-}
+function showMedicacao(medicacao) {
+    document.getElementById('medicacaoUpdate').value = medicacao.medicacao
+    document.getElementById('intensidadeUpdate').value = medicacao.intensidade
+    document.getElementById('posologiaUpdate').value = medicacao.posologia
+    }
 
-function deleteProfissional(id) {
-    fetch(`http://localhost:3000/profissional/${id}`, {
+function deleteMedicacao(id) {
+    fetch(`http://localhost:3000/medicacao/${id}`, {
         method: 'DELETE'
     }).then(resposta => {
         if(resposta.status !=200){
-            alert('Erro ao exluir profissional')
+            alert('Erro ao exluir medicação')
         }
-        alert('Profissional excluído com sucesso')
-        atualizarProfissional()
+        alert('Medicação excluída com sucesso')
+        atualizarMedicacao()
     })
 }
 
-atualizarProfissional()
+atualizarMedicacao()
 
 document.getElementById("formCadastro").addEventListener("submit", function (event) {
     event.preventDefault()
-    cadastrarProfissional(event)
+    cadastrarMedicacao(event)
 });
 
-function cadastrarProfissional(form) {
-    const Profissional = {
-        nome: form.target.nome.value,
-        CPF: form.target.CPF.value,
-        RG: form.target.RG.value,
-        profissao: form.target.profissao.value,
-        CCR: form.target.CCR.value,
-        assinatura: form.target.assinatura.value
-    }
+function cadastrarMedicacao(form) {
+    const medicacao = {
+        medicacao: form.target.medicacao.value,
+        intensidade: form.target.intensidade.value,
+        posologia: form.target.posologia.value,
+            }
 
-    fetch('http://localhost:3000/profissional', {
+    fetch('http://localhost:3000/medicacao', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(profissional)
+        body: JSON.stringify(medicacao)
     }).then(resposta => {
         if (resposta.status !=200 && resposta.status != 201) {
-            alert('Erro ao cadastrar profissional!')
+            alert('Erro ao cadastrar medicação!')
         }
-        alert('Profissional cadastrado com sucesso!')
+        alert('Medicação cadastrado com sucesso!')
         form.target.reset()
-        atualizarProfissional()
+        atualizarMedicacao()
     })
 
 }
 
 document.getElementById("formUpdate").addEventListener("submit", function (event) {
     event.preventDefault()
-    atualizarProfissional(event)
+    atualizarMedicacao(event)
 });
 
-function atualizarProfissional(form) {
-    const profissional = {
-        nome: form.target.nomeUpdate.value,
-        CPF: form.target.CPFUpdate.value,
-        RG: form.target.RGUpdate.value,
-        profissao: form.target.profissaoUpdate.value,
-        CCR: form.target.CCRUpdate.value,
-        assinatura: form.target.assinatura.value
-    }
+function atualizarMedicacao(form) {
+    const medicacao = {
+        medicacao: form.target.medicacaoUpdate.value,
+        intensidade: form.target.intensidadeUpdate.value,
+        posologia: form.target.posologiaUpdate.value,
+            }
 
-    fetch(`http://localhost:3000/profissional/${form.target.idUpdate.value}`, {
+    fetch(`http://localhost:3000/medicacao/${form.target.idUpdate.value}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(profissional)
+        body: JSON.stringify(medicacao)
     }).then(reposta => {
         if (resposta.status !=200) {
-            alert('Erro ao atualizar profisisonal!')
+            alert('Erro ao atualizar medicação!')
         }
-        alert('Profissional atualizado com sucesso!')
+        alert('Medicação atualizado com sucesso!')
         form.target.reset()
-        atualizarProfissional()
+        atualizarMedicacao()
         document.getElementById('btnUpdate').disabled = true
     })
 }
