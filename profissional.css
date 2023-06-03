@@ -1,8 +1,38 @@
 body{
-    background: rgb(7, 252, 170) ;
+    background-color: #80cbee;
 }
 
-div{
-    background: linear-gradient(rgb(5, 192, 167),white);
+ .mb-3{
+    background-color: #b8e1e9;
+ }
+
+.textoVermelho{
+    color: #f5f5f5;
+}
+.container {
+    background-color: #b8e1e9;
+  }
+.text-body-secondary{
+    background-color: #b8e1e9; 
 }
 
+  #formUpdate {
+    margin-top: 20px;
+  }
+
+  #btnUpdate {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  #listaUsuarios {
+    margin-top: 20px;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+  }
+
+  .list-group-item:hover {
+    background-color: #f0f0f0;
+  }
