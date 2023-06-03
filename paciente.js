@@ -32,11 +32,11 @@ formCadastro.addEventListener('submit',(event) => {
 
 function cadastrarPaciente(form){
     const pacienteNovo = {
-        prontuario: form.target.prontuario.value,
-        nome: form.target.nome.value,
-        dataNascimento: form.target.dataNascimento.value,
-        cpf: form.target.cpf.value,
-        telefone: form.target.telefone.value
+        prontuario: form.target.prontuarioUpdate.value,
+        nome: form.target.nomeUpdate.value,
+        dataNascimento: form.target.dataNascimentoUpdate.value,
+        cpf: form.target.cpfUpdate.value,
+        telefone: form.target.telefoneUpdate.value
     }
     fetch('http://localhost:3000/pacientes',{
         method: 'POST',
