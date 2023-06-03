@@ -1,3 +1,8 @@
 body{
-    background-color: rgb(7, 252, 170) ;
+    background: rgb(7, 252, 170) ;
 }
+
+div{
+    background: linear-gradient(rgb(5, 192, 167),white);
+}
+
