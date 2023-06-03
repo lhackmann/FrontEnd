@@ -15,6 +15,7 @@ const pacientes = fetch('http://localhost:3000/pacientes')
         btnDelete.addEventListener('click',() => deletarPaciente(paciente.prontuario))
         li.appendChild(btnDelete)
         
+        
         const ul = document.getElementById('listaPacientes')
         ul.appendChild(li)
     })       
@@ -44,7 +45,7 @@ function cadastrarPaciente(form){
     })
     .then(resposta => {
         if(resposta.status != 201){
-            alert('Erro ao cadastrar!')
+            alert('Erro ao cadastrar! Por favor inserir todos os dados validos.')
             return
         }
 
