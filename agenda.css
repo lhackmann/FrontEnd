@@ -1,8 +1,85 @@
 
-body{
-    background-color: rgb(7, 252, 170) ;
+/*body {
+    font-family: sans-serif;
 }
-div{
-    background: linear-gradient(rgb(3, 131,144), white); 
 
+div{
+    background: linear-gradient(45deg,blue,red,yellow);
+}
+
+
+.textoVermelho {
+    color:red;
+    border: 1px solid #333
+}*/
+
+/* Estilos globais */
+body{
+    background-color: #80cbee;
+}
+
+ .mb-3{
+    background-color: #b8e1e9;
  }
+
+.container {
+  justify-content: center;
+      align-items: center;
+    background-color: #f0efcf;
+  }
+.text-body-secondary{
+    background-color: #f0efcf; 
+}
+
+  #formUpdate {
+    margin-top: 20px;
+  }
+
+  #btnUpdate {
+    justify-content: center;
+      align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  #listaUsuarios {
+    margin-top: 20px;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+  }
+
+  .list-group-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  header {
+    background-color: #f0efcf;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav li {
+    display: inline;
+    margin-right: 10px;
+  }
+  nav a {
+    color: #729158;
+    text-decoration: none;
+  }
+  body {
+    background-image: url("https://fatecspgov-my.sharepoint.com/:i:/r/personal/lucas_stahl_fatec_sp_gov_br/Documents/Home.jpg?csf=1&web=1&e=Fk5vnX");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
